@@ -1,0 +1,42 @@
+// CÓDIGO EM C++ PARA CALCULAR O CRA
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+
+int main(void){
+    string disciplina;
+    int quant_disciplinas, carga_horaria, carga_h_semestre=0;
+    float media, media_semestre, cra=0;
+    float cra_atual;
+
+    cout << "CRA ATUAL (caso esteja no primeiro semestre coloque 0.0): ";
+    cin >> cra_atual;
+
+    cout << "Quantidade de disciplinas: ";
+    cin >> quant_disciplinas;
+
+    cin.ignore();
+
+    for(int i=0; i<quant_disciplinas; i++){
+        cout << "Disciplina: ";
+        getline(cin, disciplina);
+        cout << "Quantidade da carga horaria: ";
+        cin >> carga_horaria;
+        cout << "Media da disciplina: ";
+        cin >> media;
+        media_semestre = carga_horaria * media;
+        cra = cra + media_semestre;
+        carga_h_semestre += carga_horaria;
+
+        cin.ignore();
+    }
+
+    cout << "Carga horaria do semestre: " << carga_h_semestre << endl;
+    cout << "Total de horas x notas: " << cra << endl;
+    cout << "CRA: " << fixed << setprecision(1) << ((cra/carga_h_semestre)+cra_atual)/2.0 << endl;
+
+    return 0;
+}
